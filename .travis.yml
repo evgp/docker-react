@@ -21,7 +21,7 @@ deploy:
   bucket_path: docker-react
   on: # changes in master branch
     branch: master
-  access_key_id: $AWS_ACCESS_KY
+  access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
     secure: "$AWS_SECRET_KEY" # it doesn't need to be quoted, but better to quote 
  # DockerReact-env.pyiergyuzx.us-east-2.elasticbeanstalk.com
