@@ -1,9 +1,27 @@
+# root rights required
 sudo: required
+
 services:
   - docker
 
 before_install: 
   - docker build -t eugocker/docker-react -f Dockerfile.dev .
 
+# tests script
 script:
   - docker run eugocker/docker-react npm run test -- --coverage
+
+# travis has preconfigured service providers
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2" # from elasticbeanstalk link
+  app: docker-react # from elasticbeanstalk dashboard
+  env: DockerReact-env # from elasticbeanstalk dashboard
+  bucket_name: "elasticbeanstalk-us-east-2-245436128165" # services S3 buckets
+  bucket_path: docker-react
+  on: # changes in master branch
+    branch: master
+  access_key_id: $AWS_ACCESS_KY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY" # it doesn't need to be quoted, but better to quote 
+ # DockerReact-env.pyiergyuzx.us-east-2.elasticbeanstalk.com
