@@ -1,0 +1,14 @@
+
+sudo: required
+
+  # service required
+services: 
+  - docker
+  
+  # our prerequests
+before_install:
+  - docker build -t eugocker/docker-react -f Dockerfile.dev .
+
+  # script to make our test
+script:
+  - docker run eugocker/docker-react npm run test -- --coverage
