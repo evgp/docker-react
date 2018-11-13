@@ -15,6 +15,8 @@ RUN npm run build
 # Run Phase
 
 FROM nginx
+# exposing port through the Dockerfile
+EXPOSE 80
 
 # copying something from the builder phase
 COPY --from=builder /app/build /usr/share/nginx/html
