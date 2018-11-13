@@ -16,6 +16,8 @@ RUN npm run build
 
 FROM nginx
 # exposing port through the Dockerfile
+# but on a local machine this instruction not works automatically. Means nothing for developer.
+# elastic beanstalk looks for this instruction and going to map it directly automatically 
 EXPOSE 80
 
 # copying something from the builder phase
